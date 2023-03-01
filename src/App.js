@@ -1,25 +1,80 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { useState, useEffect } from "react";
+
+import Home from "./pages/Home";
+import Recipes from "./pages/Recipes";
+import Settings from "./pages/Settings";
 
 function App() {
+  const [primaryColor, setPrimaryColor] = useState(0);
+  const [fontSize, setFontSize] = useState(1);
+  const [animationSpeed, setAnimationSpeed] = useState(1);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <div className="container main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/recipes" element={<Recipes />} />
+            <Route
+              path="/settings"
+              element={
+                <Settings
+                  primaryColor={primaryColor}
+                  setPrimaryColor={setPrimaryColor}
+                  fontSize={fontSize}
+                  setFontSize={setFontSize}
+                  animationSpeed={animationSpeed}
+                  setAnimationSpeed={setAnimationSpeed}
+                />
+              }
+            />
+          </Routes>
+        </div>
+        <Footer />
+      </Router>
+    </>
   );
 }
 
 export default App;
+
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route
+// } from "react-router-dom"
+
+// import Navbar from "./components/Navbar"
+// import Footer from "./components/Footer";
+// import { useState,useEffect } from 'react'
+
+// import Home from "./pages/Home";
+// import Recipes from "./pages/Recipes";
+// import Settings from "./pages/Settings";
+
+// function App() {
+
+//   return (
+//     <>
+//     <Router>
+//       <Navbar />
+//       <div className="container main">
+//         <Routes>
+//           <Route path="/" element={<Home />} />
+//           <Route path="/recipes" element={<Recipes />} />
+//           <Route path="/settings" element={<Settings/>} />
+//         </Routes>
+//       </div>
+//       <Footer />
+//     </Router>
+//     </>
+//   )
+// }
+
+// export default App;
