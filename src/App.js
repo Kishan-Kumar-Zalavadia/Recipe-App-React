@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Home from "./pages/Home";
 import Recipes from "./pages/Recipes";
 import Settings from "./pages/Settings";
+import RecipeDetails from "./components/RecipeDetails";
 
 function App() {
   const [primaryColor, setPrimaryColor] = useState(0);
@@ -34,6 +35,7 @@ function App() {
                 />
               }
             />
+            {/* <Route path="/recipes/:recipeName" element={<RecipeDetails/>} /> */}
           </Routes>
         </div>
         <Footer />
